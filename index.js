@@ -4,7 +4,7 @@ const url = require('url');
 function boot() {
 	win = new BrowserWindow()
 	win.loadURL(url.format({
-		pathname: 'test.html',
+		pathname: 'index.html',
 		slashes: true
 	}))
 }
