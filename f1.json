@@ -1,0 +1,28 @@
+[
+ 
+    {
+        "extension": ".jpg",
+        "prefix":"img",
+        "icon": "./icons/",
+        "image": "./images1/",
+        "webp": false,
+        "count":72
+    },
+    {
+        "extension": ".jpg",
+        "prefix":"img",
+        "icon": "./icons/",
+        "image": "./images2/",
+        "webp": false,
+        "count":38
+    },
+    {
+        "extension": ".jpg",
+        "prefix":"img",
+        "icon": "./icons/",
+        "image": "./images3/",
+        "webp": false,
+        "count":80
+    }
+
+]

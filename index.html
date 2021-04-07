@@ -1,36 +1,37 @@
-<head>
-    <!---<base href="https://saasphoto.com/share/05HGU8/BridalSet%2DRing%2DHalo%2DFocusStacked%2D360/" target="_blank"> -->
-    <script type="text/javascript" src="./js/fixsvg.js" ></script></head>
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>360 View</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <meta charset="UTF-8" />
-        <link rel="stylesheet" href="./css/creator.css"/>
-        <link rel="stylesheet" href="css/uikit.min.css" />
-        <script src="js/uikit.min.js"></script>
-        <script src="js/uikit-icons.min.js"></script>
-        <script src="js/jquery.min.js"></script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>360 degree product viewer</title>
+   
+ <link rel="stylesheet" href="css/uikit.min.css" />
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="https://cdn.scaleflex.it/plugins/js-cloudimage-360-view/2.6.0/js-cloudimage-360-view.min.js"></script>
+   
+</head>
+<body >
 
-        <script src="./js/jquery.js"></script>
-        <script src="./js/jquery.plugin.js"></script>
-        <script src="./js/creator.js"></script>
-    </head>
-    <body>
-            <div  class="uk-position-relative" uk-slideshow="autoplay: false" uk-slideshow="animation: fade">
+  
+     <div  class="uk-position-relative" uk-slideshow="autoplay: false" uk-slideshow="animation: fade">
                
     <ul class="uk-slideshow-items uk-width-1-1" uk-height-viewport="min-height:300">
         <li >
-           <iframe class="uk-height-viewport  uk-width-1-1" src="test11.html" style="border:none;" title="Iframe Example"></iframe>
+          
+            <div class="uk-height-viewport uk-position-center  uk-width-1-1" style="border:none;" id="product_viewer0" ></div>
 
         </li>
         <li  >
-           <iframe class="uk-height-viewport  uk-width-1-1" src="test12.html" style="border:none;" title="Iframe Example"></iframe>
+          <div class="uk-height-viewport uk-position-center uk-width-1-1" style="border:none;" id="product_viewer1"></div>
+
  
         </li>
         <li >
-           <iframe class="uk-height-viewport  uk-width-1-1" src="test13.html" style="border:none;" title="Iframe Example"></iframe>
+           <div class="uk-height-viewport uk-position-center uk-width-1-1" style="border:none;" id="product_viewer2"></div>
+
 
         </li>
     </ul>
@@ -38,18 +39,46 @@
 
     <div class="uk-position-center-left uk-position-small">
         <ul class="uk-thumbnav uk-thumbnav-vertical" uk-margin>
-            <li uk-slideshow-item="0"><a href="#"><img src="images1/lv2/img01.jpg" width="100" alt=""></a></li>
-            <li uk-slideshow-item="1"><a href="#"><img src="images2/lv2/img01.jpg" width="100" alt=""></a></li>
-            <li uk-slideshow-item="2"><a href="#"><img src="images3/lv2/img01.jpg" width="120" alt=""></a></li>
+            <li uk-slideshow-item="0"><a href="#"><img src="images1/img01.jpg" width="100" alt=""></a></li>
+            <li uk-slideshow-item="1"><a href="#"><img src="images2/img01.jpg" width="100" alt=""></a></li>
+            <li uk-slideshow-item="2"><a href="#"><img src="images3/img01.jpg" width="100" alt=""></a></li>
         </ul>
     </div>
 
 </div>
 
 
+    
+  <script src="js/product-viewer.js"></script>
 
+  <script>
 
+"use strict";
+       
 
+         fetch("f1.json") .then(function(resp){
+                return resp.json();
+            }).then(function(data){
+                var i;
+                 console.log(data)
+                for(i=0;i<data.length;i++)
+                {
+                  
+                 var productViewer = new ProductViewer ({
+                 element: document.getElementById('product_viewer'+i),
+                 imagePath: data[i].image, 
+                 filePrefix: data[i].prefix,
+                 fileExtension: data[i].extension,
+                 numberOfImages: data[i].count
+                 });
+                 }
+               })
 
-    </body>
+              
+   
+
+  </script>
+
+    
+</body>
 </html>
